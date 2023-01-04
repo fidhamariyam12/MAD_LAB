@@ -1,0 +1,224 @@
+XML 1
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="First Activity"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.226" />
+
+
+    <Button
+
+        android:id="@+id/button"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:onClick="callSecondActivity"
+
+        android:text="callSecondActivity"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.497"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.401" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+JAVA 1
+package com.example.explicit;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import android.os.Bundle;
+
+import android.content.Intent;
+
+import android.view.View;
+
+
+public class MainActivity extends AppCompatActivity {
+
+
+    @Override
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+    }
+
+    public void callSecondActivity(View view){
+
+        Intent i = new Intent(getApplicationContext(), Main2Activity.class);
+
+        i.putExtra("Value1", "Android programming");
+
+        i.putExtra("Value2", "explicit intend");
+
+        // Set the request code to any code you like, you can identify the
+
+        // callback via this code
+
+        startActivity(i);
+
+    }
+
+}
+
+
+XML2
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    tools:context=".Main2Activity">
+
+
+    <TextView
+
+        android:id="@+id/textView"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="Second Activity"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:layout_editor_absoluteX="157dp"
+
+        tools:layout_editor_absoluteY="158dp" />
+
+
+    <Button
+
+        android:id="@+id/button2"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:onClick="callFirstActivity"
+
+        android:text="call First Activity"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:layout_editor_absoluteX="154dp"
+
+        tools:layout_editor_absoluteY="262dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+JAVA
+package com.example.explicit;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import android.os.Bundle;
+
+import android.content.Intent;
+
+import android.view.View;
+
+import android.widget.Toast;
+
+
+public class Main2Activity extends AppCompatActivity {
+
+
+    @Override
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main2);
+
+
+        Bundle extras = getIntent().getExtras();
+
+        String value1 = extras.getString("Value1");
+
+        String value2 = extras.getString("Value2");
+
+        Toast.makeText(getApplicationContext(),"Values are:\n First value: "+value1+ "\n Second Value: "+value2, Toast.LENGTH_LONG).show();
+
+    }
+
+    public void callFirstActivity(View view){
+
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+
+        startActivity(i);
+
+    }
+
+}

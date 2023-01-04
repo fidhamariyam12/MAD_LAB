@@ -1,0 +1,133 @@
+
+
+XML
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:background="#D8DBE2"
+   tools:context=".MainActivity">
+
+
+   <EditText
+       android:id="@+id/user"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="256dp"
+       android:background="#D8DBE2"
+       android:ems="10"
+       android:hint="Email or Phone Number"
+       android:inputType="textEmailAddress"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <Button
+       android:id="@+id/create"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="132dp"
+       android:backgroundTint="#70CA09"
+       android:text="Create new Account"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.504"
+       app:layout_constraintStart_toStartOf="parent" />
+
+   <EditText
+       android:id="@+id/pass"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:hint="Password"
+       app:layout_constraintBottom_toTopOf="@+id/login"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/user"
+       app:layout_constraintVertical_bias="0.708" />
+
+   <Button
+       android:id="@+id/login"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="44dp"
+       android:backgroundTint="#FF0F3686"
+       android:text="Button"
+       android:textStyle="bold"
+       app:layout_constraintBottom_toTopOf="@+id/create"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="parent" />
+
+   <ImageView
+       android:id="@+id/imageView"
+       android:layout_width="122dp"
+       android:layout_height="164dp"
+       android:layout_marginStart="144dp"
+       android:layout_marginLeft="144dp"
+       android:layout_marginTop="25dp"
+       android:layout_marginEnd="145dp"
+       android:layout_marginRight="145dp"
+       android:layout_marginBottom="23dp"
+       app:layout_constraintBottom_toTopOf="@+id/user"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.0"
+       app:srcCompat="@drawable/fb" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+JAVA
+
+package com.example.loginfb;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+   EditText username,pwd;
+   Button login;
+
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+
+       ActionBar actionBar = getSupportActionBar();
+       actionBar.setTitle("Facebook");
+
+       username=findViewById(R.id.user);
+       pwd=findViewById(R.id.pass);
+       login=findViewById(R.id.login);
+
+       login.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if(username.getText().toString().equals("admin") && pwd.getText().toString().equals("admin") )
+               {
+
+                   Toast.makeText(MainActivity.this, "logged in", Toast.LENGTH_LONG).show();
+               }
+               else
+               {
+                   Toast.makeText(MainActivity.this, " Wrong email or password", Toast.LENGTH_LONG).show();
+               }
+           }
+       });
+
+
+   }
+}

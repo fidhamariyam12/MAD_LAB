@@ -1,0 +1,105 @@
+
+XML FILE
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<EditText
+android:id="@+id/NUM1"
+
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="88dp"
+android:layout_marginLeft="88dp"
+android:layout_marginTop="98dp"
+android:layout_marginEnd="110dp"
+android:layout_marginRight="110dp"
+android:ems="10"
+android:inputType="number"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
+<EditText
+android:id="@+id/NUM2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="90dp"
+android:layout_marginLeft="90dp"
+android:layout_marginEnd="108dp"
+android:layout_marginRight="108dp"
+android:layout_marginBottom="352dp"
+android:ems="10"
+android:inputType="number"
+app:layout_constraintBottom_toTopOf="@+id/button"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/NUM1"
+app:layout_constraintVertical_bias="0.119" />
+<Button
+android:id="@+id/ADDBTN"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="161dp"
+android:layout_marginLeft="161dp"
+android:layout_marginTop="8dp"
+android:layout_marginEnd="162dp"
+android:layout_marginRight="162dp"
+android:layout_marginBottom="104dp"
+android:text="ADD"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/NUM2"
+app:layout_constraintVertical_bias="0.365" />
+<EditText
+android:id="@+id/ANS"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="number"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/ADDBTN" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+JAVA FILE
+package com.example.calculator;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+public class MainActivity extends AppCompatActivity {
+EditText num1,num2,ans;
+Button addbtn;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+num1=findViewById(R.id.NUM1);
+num2=findViewById(R.id.NUM2);
+ans=findViewById(R.id.ANS);
+addbtn=findViewById(R.id.ADDBTN);
+addbtn. setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+int x=Integer.parseInt(num1.getText().toString());
+int y=Integer.parseInt(num2.getText().toString());
+int sum=x+y;
+ans.setText(String.valueOf(sum));
+}
+});
+
+}
+}
