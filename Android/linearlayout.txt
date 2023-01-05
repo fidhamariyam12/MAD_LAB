@@ -1,0 +1,113 @@
+XML FILE
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+tools:context=".MainActivity">
+<EditText
+android:id="@+id/num1"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_row="1"
+android:layout_column="0"
+android:ems="10"
+android:inputType="number" />
+<EditText
+android:id="@+id/num2"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_row="0"
+android:layout_column="2"
+android:ems="10"
+android:inputType="number" />
+<Button
+android:id="@+id/add"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Addition" />
+<Button
+android:id="@+id/subtract"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Subtraction" />
+<Button
+android:id="@+id/multiply"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Multiplication" />
+<Button
+android:id="@+id/divide"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="DIVISION" />
+<TextView
+android:id="@+id/ans"
+android:layout_width="match_parent"
+android:layout_height="47dp"
+android:text="TextView" />
+</LinearLayout>
+JAVA FILE
+package com.example.calculator_lin;
+import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+EditText n1,n2;
+TextView answer;
+Button addbtn,subbtn,multbtn,divbtn;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+n1=findViewById(R.id.num1);
+n2=findViewById(R.id.num2);
+answer=findViewById(R.id.ans);
+addbtn=findViewById(R.id.add);
+subbtn=findViewById(R.id.subtract);
+multbtn=findViewById(R.id.multiply);
+divbtn=findViewById(R.id.divide);
+addbtn.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+int x=Integer.parseInt(n1.getText().toString());
+int y=Integer.parseInt(n2.getText().toString());
+int add=x+y;
+answer.setText(String.valueOf(add));
+}
+});
+subbtn.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+int x=Integer.parseInt(n1.getText().toString());
+int y=Integer.parseInt(n2.getText().toString());
+int sub=x-y;
+answer.setText(String.valueOf(sub));
+}
+});
+multbtn.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+int x=Integer.parseInt(n1.getText().toString());
+int y=Integer.parseInt(n2.getText().toString());
+int mul=x*y;
+answer.setText(String.valueOf(mul));
+}
+});
+divbtn.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+int x=Integer.parseInt(n1.getText().toString());
+int y=Integer.parseInt(n2.getText().toString());
+int divv=x/y;
+answer.setText(String.valueOf(divv));
+}
+});
+}
+}
